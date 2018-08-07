@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- Project definition -->
+<project name="AntSample" basedir="" default="init">
+
+    <!-- Define properties needed for build -->
+    <property name="srcdir" value="src"/>
+    <property name="outdir" value="target/classes"/>
+
+    <!-- Clean target.  Delete the output directory. -->
+    <target name="clean">
+        <delete dir="${outdir}" excludes="com/**"/>
+    </target>
+
+    <!-- Init target.  Create the output directory. if it does not exist. -->
+    <!-- Copy inventory.xml to $(outdir) -->
+    <target name="init" depends="clean">
+        <mkdir dir="${outdir}"/>
+        <copy todir="${outdir}">
+            <fileset dir="src\main\resources" includes="**"/>
+            <fileset dir="src\main\webapp" includes="**"/>
+        </copy>
+    </target>
+</project>
